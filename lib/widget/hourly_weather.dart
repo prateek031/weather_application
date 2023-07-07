@@ -53,8 +53,8 @@ class HourlyWeatherWidget extends StatelessWidget {
                       color: CustomColrs.dividerLine.withAlpha(150))
                 ],
                 gradient: LinearGradient(colors: [
-                  Color.fromARGB(255, 135, 221, 255),
-                  Color.fromARGB(255, 87, 201, 253)
+                  Color.fromARGB(108, 255, 255, 255),
+                  Color.fromARGB(113, 255, 255, 255)
                 ])),
             child: HourlyDetails(
                 temp: weatherDataHourly.hourly[index].temp!,

@@ -22,30 +22,40 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: const Color.fromARGB(255, 18, 54, 83),
       body: SafeArea(
-        child: Obx(() => globalController.checkLoading().isTrue
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : Center(
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  const SizedBox(
-                    height: 100,
-                  ),
-                  const HeaderWidget(),
-                  CurrentWeatherWidget(
-                    weatherDataCurrent: globalController.getData().getCurrentWeather(),
-                  ),
-                  SizedBox(
-                    height: 100,
-                  ),
-                  HourlyWeatherWidget(weatherDataHourly: globalController.getData().getHourlyWeather()),
-                ],
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage("assets/weather/bgii.jpg"),fit: BoxFit.cover)
               ),
-            )),
+
+            ),
+                Obx(() => globalController.checkLoading().isTrue
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Center(
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      const SizedBox(
+                        height: 100,
+                      ),
+                      const HeaderWidget(),
+                      CurrentWeatherWidget(
+                        weatherDataCurrent: globalController.getData().getCurrentWeather(),
+                      ),
+                      SizedBox(
+                        height: 100,
+                      ),
+                      HourlyWeatherWidget(weatherDataHourly: globalController.getData().getHourlyWeather()),
+                    ],
+                  ),
+                )),
+              ],
+        ),
       ),
     );
   }
